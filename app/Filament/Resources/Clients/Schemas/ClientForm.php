@@ -6,6 +6,8 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Auth;
+use BackedEnum;
 
 class ClientForm
 {
@@ -31,9 +33,17 @@ class ClientForm
                     ->required(),
                 Select::make('created_by')
                     ->required()->searchable()
+                    ->default(Auth::user()->id)
+                    ->preload()
+                    ->disabled()
+                    ->dehydrated(true)
                     ->relationship('creator', 'name'),
                 Select::make('updated_by')
                     ->required()->searchable()
+                    ->default(Auth::user()->id)
+                    ->preload()
+                    ->disabled()
+                    ->dehydrated(true)
                     ->relationship('updater', 'name'),
             ]);
     }
