@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Models\Task;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 
 
 class RecentTasks extends TableWidget
 {
+    use HasWidgetShield;
     protected int | string | array $columnSpan = 'full';
     protected static ?int $sort = 1;
     public function table(Table $table): Table

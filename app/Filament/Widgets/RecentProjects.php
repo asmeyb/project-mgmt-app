@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Filament\Actions\BulkActionGroup;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
@@ -12,6 +13,7 @@ use Filament\Tables\Columns\TextColumn;
 
 class RecentProjects extends TableWidget
 {
+    use HasWidgetShield;
     protected static ?int $sort = 2;
     protected int | string | array $columnSpan = 'full';
     public function table(Table $table): Table
